@@ -3,6 +3,7 @@ import { getWord } from '../lib/api'
 
 function Search() {
   const [data, setData] = React.useState(undefined)
+  const [isHistoryPage, setIsHistoryPage] = React.useState(false)
   const audioObj = new Audio(null)
   const [fullHistory, setFullHistory] = React.useState([])
   const [wordHistory, setWordHistory] = React.useState({
@@ -31,6 +32,7 @@ function Search() {
     try {
       const response = await getWord(search)
       setData(response.data)
+      setIsHistoryPage(false)
     } catch (err) {
       console.log(err)
     } 
@@ -40,10 +42,15 @@ function Search() {
     try {
       const response = await getWord(search)
       setData(response.data)
-      handleFullHistory(search)
+      handleFullHistory(response.data[0].word)
+      setIsHistoryPage(false)
     } catch (err) {
       console.log(err)
     } 
+  }
+
+  const toggleHistory = () => {
+    setIsHistoryPage(!isHistoryPage)
   }
   
 
@@ -66,6 +73,7 @@ function Search() {
       try {
         const response = await getWord(wordHistory.words[wordHistory.pointer - 1])
         setData(response.data)
+        setIsHistoryPage(false)
       } catch (err) {
         console.log(err)
       } 
@@ -78,10 +86,17 @@ function Search() {
       try {
         const response = await getWord(wordHistory.words[wordHistory.pointer + 1])
         setData(response.data)
+        setIsHistoryPage(false)
       } catch (err) {
         console.log(err)
       } 
     }
+  }
+
+  // Creates new object so original array is not reversed
+  const reverseInput = (inputs) => {
+    const outputs = [ ...inputs ]
+    return (outputs.reverse())
   }
 
   const handleAudio = async (e) => {
@@ -156,12 +171,12 @@ function Search() {
           <div className='button-wrap'>
             <button className="button is-info" id='back-button' onClick={handleBack}>Back</button>
             <button className="button is-success" id='forward-button' onClick={handleForward}>Forward</button>
-            <button className="button is-warning" id='history-button'>History</button>
+            <button className={`button ${(isHistoryPage) ? 'is-danger' : 'is-warning'}`} id='history-button' onClick={toggleHistory}>{(isHistoryPage) ? 'Search' : 'History'}</button>
           </div>
         </div>
         
         
-        {data && 
+        {!isHistoryPage && data && 
           <div className='container'>
             {data.map((item, index) => {
               return (
@@ -194,6 +209,21 @@ function Search() {
                 </div>
               )
             })}
+          </div>
+        }
+        {isHistoryPage && 
+          <div className='container'>
+            <div className='box border'>
+              <div className='columns is-multiline'>
+                {reverseInput(wordHistory.words).map(word => {
+                  return (
+                    <div className='column'>
+                      <button className='button is-warning' onClick={handleLink}>{word}</button>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
           </div>
         }
       </div>

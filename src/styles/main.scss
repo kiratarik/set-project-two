@@ -36,10 +36,6 @@ body {
   justify-content: space-evenly;
 }
 
-#history-button, #back-button, #forward-button, #audio-button {
-  border: 2px solid black;
-}
-
 #audio-button {
   margin-bottom: 25px;
   // margin-top: ;
@@ -48,4 +44,19 @@ body {
 
 .bold-text {
   background-color: yellow;
+}
+
+.button {
+  border: 2px solid black!important;
+}
+
+@media(max-width: 720px) {
+  .search-wrap {
+    display: block;
+  }
+
+  .button-wrap {
+    margin: -10px 0px 12px 0px;
+    width: Calc(100vw - 92px);
+  }
 }

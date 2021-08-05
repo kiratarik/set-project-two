@@ -1,7 +1,3 @@
-// import { BrowserRouter, Route, Switch } from 'react-router-dom'
-
-// import Home from './components/Home'
-// import History from './components/History'
 import Search from './components/Search'
 
 function App() {
@@ -14,17 +10,3 @@ function App() {
 }
 
 export default App
-
-// <BrowserRouter>
-//   <Switch>
-//     <Route exact path='/'>
-//       <Home />
-//     </Route>
-//     <Route exact path='/search'>
-//       <Search />
-//     </Route>
-//     <Route path='/history'>
-//       <History />
-//     </Route>
-//   </Switch>
-// </BrowserRouter>
