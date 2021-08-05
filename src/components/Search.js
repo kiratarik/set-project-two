@@ -4,7 +4,7 @@ import { getWord } from '../lib/api'
 function Search() {
   const [data, setData] = React.useState(undefined)
   const [isHistoryPage, setIsHistoryPage] = React.useState(false)
-  const audioObj = new Audio(null)
+  const audioObj = new Audio(undefined)
   const [fullHistory, setFullHistory] = React.useState([])
   const [wordHistory, setWordHistory] = React.useState({
     words: ['dictionary'],
@@ -170,9 +170,7 @@ function Search() {
       }
     }
     const trueWord = word.slice(firstLetterPosition, lastLetterPosition)
-    
-    // Reformating output so if works with preexisting functions
-    const linkedWord = { target: { value: trueWord } }
+
     handleClick(trueWord)
   }
 
@@ -228,9 +226,9 @@ function Search() {
           <div className='container'>
             <div className='box border'>
               <div className='columns is-multiline'>
-                {reverseInput(fullHistory).map(word => {
+                {reverseInput(fullHistory).map((word, index) => {
                   return (
-                    <div className='column'>
+                    <div key={index} className='column'>
                       <button className='button is-warning' onClick={handleLink}>{word}</button>
                     </div>
                   )
