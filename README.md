@@ -18,3 +18,22 @@ To prevent the `failed-to-compile` issue for linter errors like `no-unsed-vars`,
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+###
+
+Plan: Build a Dictionary
+
+- Main Search - DONE
+  • Searchbar
+  • Get data from api
+  • Process Data from api
+  • Style page
+  • Add links to every word
+  • Add audio for pronounciations
+
+- History page - DONE
+  • Add Back, Forward and History buttons
+  • Store clicked links history
+
+- Remaining Problems:
+  • Going back and clicking => (change 'wordHistory.words' to 'fullHistory' on line 218)
+  • Make all outputs on Definitions and Example start with a capital letter and end with a full stop. => (added 12 lines of code at line 120)

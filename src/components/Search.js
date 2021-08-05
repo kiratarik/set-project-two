@@ -117,6 +117,19 @@ function Search() {
   // returns sentences with each word wrapped in a span with onClicks
   const wordLinks = (text) => {
     const texts = text.split(' ')
+
+    // set first letter capital and end in full stop
+    if (texts.length > 1) {
+      const firstWord = texts[0].split('')
+      firstWord[0] = firstWord[0].toUpperCase()
+      texts[0] = firstWord.join('')
+      const lastWord = texts[texts.length - 1].split('')
+      if (lastWord[lastWord.length - 1] !== '.') {
+        lastWord.push('.')
+        texts[texts.length - 1] = lastWord
+      }
+    }
+
     const linkedTexts = texts.map((word, index) => {
       return (
         <span key={index}><span onClick={handleLink} onMouseEnter={handleEnter} onMouseLeave={handleLeave}>{word}</span> </span>
@@ -215,7 +228,7 @@ function Search() {
           <div className='container'>
             <div className='box border'>
               <div className='columns is-multiline'>
-                {reverseInput(wordHistory.words).map(word => {
+                {reverseInput(fullHistory).map(word => {
                   return (
                     <div className='column'>
                       <button className='button is-warning' onClick={handleLink}>{word}</button>
