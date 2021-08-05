@@ -115,11 +115,11 @@ function Search() {
 
 
   // returns sentences with each word wrapped in a span with onClicks
-  const wordLinks = (text) => {
+  const wordLinks = (text, isSentence) => {
     const texts = text.split(' ')
 
     // set first letter capital and end in full stop
-    if (texts.length > 1) {
+    if (isSentence) {
       const firstWord = texts[0].split('')
       firstWord[0] = firstWord[0].toUpperCase()
       texts[0] = firstWord.join('')
@@ -210,9 +210,9 @@ function Search() {
                         {mean.definitions.map((def, index) => {
                           return (
                             <div key={index} className='box border'>
-                              {def.definition && <p><strong>Definition{(mean.definitions.length > 1) ? ` ${index + 1}` : ''}: </strong>{wordLinks(def.definition)}</p>}
-                              {def.example && <p><strong>Example:</strong> {wordLinks(def.example)}</p>}
-                              {def.synonyms && <p><strong>Synonyms:</strong> {wordLinks(def.synonyms.join(', '))}</p>}
+                              {def.definition && <p><strong>Definition{(mean.definitions.length > 1) ? ` ${index + 1}` : ''}: </strong>{wordLinks(def.definition, true)}</p>}
+                              {def.example && <p><strong>Example:</strong> {wordLinks(def.example, true)}</p>}
+                              {def.synonyms && <p><strong>Synonyms:</strong> {wordLinks(def.synonyms.join(', '), true)}</p>}
                             </div>
                           )
                         })}

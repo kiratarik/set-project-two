@@ -37,3 +37,4 @@ Plan: Build a Dictionary
 - Remaining Problems:
   • Going back and clicking => (change 'wordHistory.words' to 'fullHistory' on line 218)
   • Make all outputs on Definitions and Example start with a capital letter and end with a full stop. => (added 12 lines of code at line 120)
+  • Styling
