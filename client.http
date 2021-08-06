@@ -1,3 +1,3 @@
-@baseUrl = https://api.dictionaryapi.dev/api/v2/entries/en_GB/
+@baseUrl = https://api.dictionaryapi.dev/api/v2/entries/en_US/
 
 GET {{baseUrl}}hello

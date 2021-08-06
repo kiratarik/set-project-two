@@ -34,7 +34,8 @@ function Search({ data, audioObj, handleLink }) {
       firstWord[0] = firstWord[0].toUpperCase()
       texts[0] = firstWord.join('')
       const lastWord = texts[texts.length - 1].split('')
-      if (lastWord[lastWord.length - 1] !== '.') {
+      const lastChar = lastWord[lastWord.length - 1]
+      if (!((lastChar === '.') || (lastChar === '!') || (lastChar === '?'))) {
         lastWord.push('.')
         texts[texts.length - 1] = lastWord
       }
