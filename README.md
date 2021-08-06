@@ -34,8 +34,6 @@ Plan: Build a Dictionary
   • Add Back, Forward and History buttons
   • Store clicked links history
 
-- Remaining Problems:
-  • Going back and clicking => (change 'wordHistory.words' to 'fullHistory' on line 218)
-  • Make all outputs on Definitions and Example start with a capital letter and end with a full stop. => (added 12 lines of code at line 120)
-  • Fix audio error => change 'null' to 'undefined' at line 7.
-  • Styling
+- Split into components - DONE
+
+-  Add Header - DONE
