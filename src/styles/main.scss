@@ -49,12 +49,23 @@ body {
 .button {
   border: 2px solid black!important;
 }
+@media(max-width: 1407px) {
+  .button-wrap {
+    margin: 10px 0px 10px 15px;
+  }
+}
+
+@media(max-width: 1215px) {
+  .button-wrap {
+    width: 400px;
+  }
+}
 
 @media(max-width: 720px) {
   .search-wrap {
     display: block;
   }
-
+  
   .button-wrap {
     margin: -10px 0px 12px 0px;
     width: Calc(100vw - 92px);
