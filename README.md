@@ -20,20 +20,27 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ###
 
+Team name: Pneumonoultramicroscopicsilicovolcanoconiosis
+
 Plan: Build a Dictionary
 
 - Main Search - DONE
-  • Searchbar
-  • Get data from api
-  • Process Data from api
-  • Style page
-  • Add links to every word
-  • Add audio for pronounciations
+  • Searchbar.
+  • Get data from api.
+  • Process Data from api.
+  • Style page.
+  • Add links to every word.
+    • Make sentences start with capital and end with full stop.
+    • Make links highlight yellow on mouse over.
+    • Make failed link searches highlight red.
+  • Add audio for pronounciations.
 
 - History page - DONE
-  • Add Back, Forward and History buttons
-  • Store clicked links history
+  • Add Back, Forward and History buttons.
+  • Store clicked links history.
+  • Make clicking a new link afte going back remove forward history.
+  • Style page.
 
 - Split into components - DONE
 
--  Add Header - DONE
+- Add Header - DONE

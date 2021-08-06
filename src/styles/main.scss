@@ -77,14 +77,13 @@ body {
 
 .main-word {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  height: 38px;
 }
 
 .phonetic {
   height: 22px;
   margin-left: 20px;
-
 }
 
 .big-word {
