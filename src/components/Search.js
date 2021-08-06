@@ -4,13 +4,24 @@ function Search({ data, audioObj, handleLink }) {
     audioObj.play()
   }
 
-  // applies a bold class on hover
-  const handleEnter = async (e) => {
-    e.target.className = 'bold-text'
+  // handles link, if link failed => highlight red
+  const handleClickLink = async (e) => {
+    const check = await handleLink(e)
+    if (check) {
+      e.target.classList.remove('highlight-red')
+    } else {
+      e.target.classList.add('highlight-red')
+    }
   }
-  // removes a bold class on hover
+
+  // applies a highlight class on hover
+  const handleEnter = async (e) => {
+    e.target.classList.add('highlight')
+  }
+  // removes highlight classes on hover
   const handleLeave = async (e) => {
-    e.target.className = ''
+    e.target.classList.remove('highlight')
+    e.target.classList.remove('highlight-red')
   }
 
   // returns sentences with each word wrapped in a span with onClicks
@@ -29,9 +40,11 @@ function Search({ data, audioObj, handleLink }) {
       }
     }
 
+    // return linked words
     const linkedTexts = texts.map((word, index) => {
       return (
-        <span key={index}><span onClick={handleLink} onMouseEnter={handleEnter} onMouseLeave={handleLeave}>{word}</span> </span>
+        <span key={index}><span onClick={handleClickLink} onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+          {word}</span> </span>
       )
     })
     return (linkedTexts)
@@ -46,15 +59,14 @@ function Search({ data, audioObj, handleLink }) {
             <div className='main-word'>
               <h3 className='title big-word'>{wordLinks(item.word)}</h3>
               {item.phonetics && 
-              item.phonetics.map((item, index) => {
+              item.phonetics.map((phon, index) => {
                 return (
                   <div key={index} className='phonetic'>
-                    {item.text && <button id={item.audio} onClick={handleAudio}>{item.text}</button>}
+                    {phon.text && <button id={phon.audio} onClick={handleAudio}>{phon.text}</button>}
                   </div>
                 )
               })}
             </div>
-            
             {item.meanings.map((mean, index) => {
               return (
                 <div key={index}>
@@ -62,9 +74,16 @@ function Search({ data, audioObj, handleLink }) {
                   {mean.definitions.map((def, index) => {
                     return (
                       <div key={index} className='box border no-shadow'>
-                        {def.definition && <p><strong>Definition{(mean.definitions.length > 1) ? ` ${index + 1}` : ''}: </strong>{wordLinks(def.definition, true)}</p>}
-                        {def.example && <p><strong>Example:</strong> {wordLinks(def.example, true)}</p>}
-                        {def.synonyms && <p><strong>Synonyms:</strong> {wordLinks(def.synonyms.join(', '), true)}</p>}
+                        {def.definition && 
+                        <p><strong>Definition{(mean.definitions.length > 1) ? ` ${index + 1}` : ''}: </strong>
+                          {wordLinks(def.definition, true)}</p>
+                        }
+                        {def.example && 
+                        <p><strong>Example:</strong> {wordLinks(def.example, true)}</p>
+                        }
+                        {def.synonyms && 
+                        <p><strong>Synonyms:</strong> {wordLinks(def.synonyms.join(', '), true)}</p>
+                        }
                       </div>
                     )
                   })}

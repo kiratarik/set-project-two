@@ -21,7 +21,7 @@ function Main() {
         const response = await getWord('dictionary')
         setData(response.data)
       } catch (err) {
-        console.log(err)
+        return false
       }
     }
     getData()
@@ -73,7 +73,7 @@ function Main() {
     }
     const trueWord = word.slice(firstLetterPosition, lastLetterPosition)
 
-    handleClick(trueWord)
+    return handleClick(trueWord)
   }
 
   const handleClick = async (search) => {
@@ -82,12 +82,13 @@ function Main() {
       setData(response.data)
       handleFullHistory(response.data[0].word)
       setIsHistoryPage(false)
+      return true
     } catch (err) {
-      console.log(err)
+      return false
     } 
   }
 
-  
+
   return (
     <section className='section'>
       <div className='container box border main-box'>

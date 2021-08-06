@@ -14,32 +14,29 @@ function Input({ setData, isHistoryPage, setIsHistoryPage,  wordHistory, setWord
       setData(response.data)
       setIsHistoryPage(false)
     } catch (err) {
-      console.log(err)
+      return false
     } 
   }
-  
-  const handleBack = async () => {
-    if (wordHistory.pointer > 0) {
-      setWordHistory({ ...wordHistory, pointer: wordHistory.pointer - 1 })
-      try {
-        const response = await getWord(wordHistory.words[wordHistory.pointer - 1])
-        setData(response.data)
-        setIsHistoryPage(false)
-      } catch (err) {
-        console.log(err)
-      } 
-    }
-  }
 
-  const handleForward = async () => {
-    if (wordHistory.pointer < wordHistory.words.length - 1) {
-      setWordHistory({ ...wordHistory, pointer: wordHistory.pointer + 1 })
+  const handleMove = async (e) => {
+    let direction = 0
+    switch (e.target.textContent) {
+      case 'Back':
+        (wordHistory.pointer > 0) ? direction = -1 : ''
+        break
+      case 'Forward':
+        (wordHistory.pointer < wordHistory.words.length - 1) ? direction = 1 : ''
+        break
+    }
+    if (direction !== 0) {
+      const newPointer = wordHistory.pointer + direction
+      setWordHistory({ ...wordHistory, pointer: newPointer })
       try {
-        const response = await getWord(wordHistory.words[wordHistory.pointer + 1])
+        const response = await getWord(wordHistory.words[newPointer])
         setData(response.data)
         setIsHistoryPage(false)
       } catch (err) {
-        console.log(err)
+        return false
       } 
     }
   }
@@ -69,11 +66,11 @@ function Input({ setData, isHistoryPage, setIsHistoryPage,  wordHistory, setWord
       />
       <div className='button-wrap'>
         <button className='button is-info' id='back-button' 
-          onClick={handleBack} onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+          onClick={handleMove} onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
             Back
         </button>
         <button className='button is-success' id='forward-button' 
-          onClick={handleForward} onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+          onClick={handleMove} onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
           Forward
         </button>
         <button className={`button ${(isHistoryPage) ? 
