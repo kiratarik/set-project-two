@@ -26,8 +26,12 @@ function Search({ data, audioObj, handleLink }) {
 
   // returns sentences with each word wrapped in a span with onClicks
   const wordLinks = (text, isSentence) => {
+    console.log('text', text, 'isSentence', isSentence)
+    if (text === undefined) {
+      return 
+    }
     const texts = text.split(' ')
-    console.log(text, isSentence)
+    
     // set first letter capital and end in full stop
     if ((isSentence) && text !== '') {
       const firstWord = texts[0].split('')
