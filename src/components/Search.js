@@ -86,7 +86,7 @@ function Search({ data, audioObj, handleLink }) {
                         {def.example && 
                         <p><strong>Example:</strong> {wordLinks(def.example, true)}</p>
                         }
-                        {def.synonyms && 
+                        {def.synonyms && def.synonyms.length > 0 &&
                         <p><strong>Synonyms:</strong> {wordLinks(def.synonyms.join(', '), true)}</p>
                         }
                       </div>
