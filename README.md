@@ -13,7 +13,7 @@
 1. [Bugs](#bugs)
 
 ## Overview:
-My second project in the Software Engineering Immersive Course and my first time coding in a pair with Christian Baker. The project was an online dictionary with a history function and with links on the words to new definitions using a public API.
+My second project in the Software Engineering Immersive Course and my first time coding in a pair with [Christian Baker](https://github.com/Majoggy). The project was an online dictionary with a history function and with links on the words to new definitions using a public API.
 
 ## Brief:
 **Goal:** Create an online dictionary using a public API.
