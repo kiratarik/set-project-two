@@ -1,4 +1,4 @@
-# General Assembly Project 1: Tetris Game
+# General Assembly Project 2: Online Dictionary
 ![mainimage](./ReadMeImages/0.png)
 
 ## Table of Contents:
