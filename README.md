@@ -4,6 +4,7 @@
 ## Table of Contents:
 1. [Overview](#overview)
 1. [Brief](#brief)
+1. [Planning](#planning)
 1. [Approach](#approach)
 1. [Work Split](#work-split)
 1. [Wins](#wins)
@@ -26,12 +27,13 @@ My second project in the Software Engineering Immersive Course and my first time
 
 **Deployed version:** https://sei-kiratarik-project-two.netlify.app
 
-## Approach:
-Our intention with this project was to choose something simple but with many features we could add as we went. We eventually chose this and although we struggled with splitting up the work we eventually split things up such that I focussed on the nitty gritty of JavaScript and React that I was best at, while my partner focussed on other parts including all of the styling. My approach was to look through what the public API provided and find ways to use all of it before neatening up and making the results consistent and presentable, and then figuring out new features to add.
-
+## Planning:
 First we discussed what project to do, entertaining the idea of a movie search system but unable to find an appropriate public API to use. We ended up browsing APIs for ideas until agreeing on the dictionary idea after I found a public API we could use. We made some wireframes for how it would look, deciding to try and use as much of the data that the API provided as we could. We then came up with a stretch goal of a History system so that users can easily find words they have already searched for recently:
 ![image1](./ReadMeImages/1.png)
 ![image2](./ReadMeImages/1.png)
+
+## Approach:
+Our intention with this project was to choose something simple but with many features we could add as we went. We eventually chose this and although we struggled with splitting up the work we eventually split things up such that I focussed on the nitty gritty of JavaScript and React that I was best at, while my partner focussed on other parts including all of the styling. My approach was to look through what the public API provided and find ways to use all of it before neatening up and making the results consistent and presentable, and then figuring out new features to add.
 
 ## Work Split:
 We were inexperienced in working in pairs and using the Liveshare software resulting in us often working on the same code at the same time while bouncing ideas off of each other. The end result is that for the majority of the code, I cannot say that it is distinctly one or the other’s work. Exceptions to this include styling which was almost all Chrisian. Notable code that was almost all me include sentence structure correction and the part of the code that detects unwanted punctuation for the links.
